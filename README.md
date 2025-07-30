@@ -1,16 +1,14 @@
-## Hi there 👋
-
-<!--
-**say1-e/say1-e** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <img src="https://github-readme-stats.vercel.app/api?username=say1-e&show_icons=true&theme=buefy" />
+      </td>
+      <td align="center" width="50%">
+        <a href="https://solved.ac/profile/tpdnjs4421">
+          <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=tpdnjs4421" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
