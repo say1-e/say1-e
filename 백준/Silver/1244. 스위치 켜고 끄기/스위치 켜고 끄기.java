@@ -19,33 +19,18 @@ public class Main {
 		for (int i = 0 ; i < N ; i++) {
 			st = new StringTokenizer(br.readLine()," ");
 			int sex = Integer.parseInt(st.nextToken());
+			int num = Integer.parseInt(st.nextToken());
 			
 			if (sex == 1) {
-				int num = Integer.parseInt(st.nextToken());
-				for (int j = 0 ; j < S ; j++) {
-					if ((j+1) % num == 0) {
-						if (sw[j] == 0) sw[j] = 1;
-						else sw[j] = 0;
-					}
-				}
-				
-			} else if (sex == 2) {
-				int num = Integer.parseInt(st.nextToken());
+				for (int j = num-1 ; j < S ; j += num) sw[j] ^= 1;
+			} else {
 				if (sw[num-1] == 0) sw[num-1] = 1;
 				else sw[num-1] = 0;
 				int idx = 1;
-				while(true) {
-					if (num-1+idx < S && num-1-idx >= 0 && sw[num-1+idx] == sw[num-1-idx]) {
-						if (sw[num-1+idx] == 0) {
-							sw[num-1+idx] = 1;
-							sw[num-1-idx] = 1;
-						}
-						else {
-							sw[num-1+idx] = 0;
-							sw[num-1-idx] = 0;
-						}
+				while(num-1+idx < S && num-1-idx >= 0 && sw[num-1+idx] == sw[num-1-idx]) {
+							sw[num-1+idx] ^= 1;
+							sw[num-1-idx] ^= 1;
 						idx++;
-					} else break;
 				}
 			}
 		}
