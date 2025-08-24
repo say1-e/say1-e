@@ -20,7 +20,6 @@ public class Main {
 		int[] map = new int[100001];
 		ArrayDeque<Integer> q = new ArrayDeque<>();
 		q.add(N);
-		map[N] = 0;
 		
 		while(!q.isEmpty()) {
 			int x = q.poll();
@@ -50,3 +49,4 @@ public class Main {
 	}
 
 }
+
