@@ -1,10 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -16,43 +14,38 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken());
 		int N = Integer.parseInt(st.nextToken());
 		int[][] tomato = new int[N][M];
-		List<int[]> nofresh = new ArrayList<>();
+		Deque<int[]> q = new ArrayDeque<>();
+		int rawTomato = 0;
 		for (int i = 0 ; i < N ; i++) {
 			st = new StringTokenizer(br.readLine()," ");
 			for (int j = 0 ; j < M ; j++) {
 				tomato[i][j] = Integer.parseInt(st.nextToken());
-				if (tomato[i][j] == 1) nofresh.add(new int[] {i,j});
+				if (tomato[i][j] == 1) q.add(new int[] {i,j});
+				else if (tomato[i][j] == 0) rawTomato++;
 			}
 		}
 		
-		boolean[][] visited = new boolean[N][M];
-		Queue<int[]> q = new LinkedList<>();
-		for (int[] cur : nofresh) {
-			q.offer(cur);
-			visited[cur[0]][cur[1]] = true;
+		//처음부터 다 익었다면?
+		if (rawTomato == 0) {
+			System.out.println(0);
+			return;
 		}
-		int cnt = 0;
+		
+		int maxDay = 1;
 		while (!q.isEmpty()) {
 			int[] cur = q.poll();
-			if (tomato[cur[0]][cur[1]] == -1) continue;
 			for (int d = 0 ; d < 4 ; d++) {
 				int nx = cur[0] + dx[d];
 				int ny = cur[1] + dy[d];
 				if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
-				if (tomato[nx][ny] == -1) continue;
-				if (visited[nx][ny]) continue;
-				visited[nx][ny] = true;
+				if (tomato[nx][ny] != 0 ) continue; //day갱신 혹은 벽(-1) 패쓰
 				tomato[nx][ny] = tomato[cur[0]][cur[1]]+1;
-				q.offer(new int[] {nx,ny});
+				rawTomato--;
+				q.add(new int[] {nx,ny});
 			}
-			cnt = Math.max(tomato[cur[0]][cur[1]], cnt);
+			maxDay = Math.max(tomato[cur[0]][cur[1]], maxDay);
 		}
-		boolean flag = true;
-		for (int i = 0 ; i < N ; i++) {
-			for (int j = 0 ; j < M ; j++) {
-				if (tomato[i][j] == 0) flag = false;
-			}
-		}
-		System.out.println(flag ? cnt-1 : -1);
+		
+		System.out.println(rawTomato == 0 ? maxDay-1 : -1);
 	}
 }
