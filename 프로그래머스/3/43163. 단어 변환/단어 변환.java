@@ -15,8 +15,8 @@ class Solution {
         this.target = target;
         this.words = words;
         this.visited = new boolean[words.length];
-        dfs(begin, 0);
-        return minCnt == Integer.MAX_VALUE ? 0 : minCnt;
+        dfs(begin,0);
+        return minCnt;
     }
     
     public static void dfs(String str, int cnt){
