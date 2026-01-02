@@ -67,10 +67,7 @@
   <a href="https://solved.ac/profile/tpdnjs4421">
     <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=tpdnjs4421" />
   </a>
-
-  <!-- 잔디심기 (기여 그래프) -->
-  <br><br>
-  <img src="https://ghchart.rshah.org/say1-e" />
+  <img src="http://mazandi.herokuapp.com/api?handle=tpdnjs4421&theme=warm" />
 </div>
 
 # 📮 Contact
